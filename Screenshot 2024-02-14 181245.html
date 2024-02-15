@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; /* Remove default margin */
+        }
+
+        #popup-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            max-width: 80%; /* Set a maximum width for the popup */
+        }
+
+        #popup-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 50%; /* Make the images circular */
+            max-width: 250px; /* Set a maximum width for a smaller square shape */
+            margin: 0 auto 10px; /* Center the image and add space between images */
+        }
+
+        #close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .column {
+            flex: 48%; /* Set the width for each column with a small gap */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Popup container -->
+<div id="popup-container">
+    <h1 align="Center">Buy on</h1>
+    <span id="close-btn" onclick="closePopup()">X</span>
+    <div class="row">
+       
+        <div class="column">
+            <a href="https://www.amazon.in/" target="_blank"><img src="./Amazon_icon.png" alt="Image 1"></a>
+        </div>
+        <div class="column">
+            <a href="https://www.flipkart.com/" target="_blank"><img src="./flipart.png" alt="Image 2"></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <a href="https://treyfa.in/" target="_blank"><img src="./Untitled-1.png" alt="Image 3"></a>
+        </div>
+        <div class="column">
+            <a href="https://www.jiomart.com/" target="_blank"><img src="./jio mart.png" alt="Image 4"></a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Show the popup when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('popup-container').style.display = 'block';
+    });
+
+    function closePopup() {
+        document.getElementById('popup-container').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

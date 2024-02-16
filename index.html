@@ -6,7 +6,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0; /* Remove default margin */
+            margin: 0; 
+            /* Remove default margin */
         }
 
         #popup-container {
@@ -15,7 +16,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: white;
+            background-color: black;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             z-index: 1000;
@@ -23,12 +24,36 @@
         }
 
         #popup-container img {
-            width: 100%;
+            width: 55%;
             height: auto;
             display: block;
-            border-radius: 50%; /* Make the images circular */
+            border-radius: 5px; /* Add border radius for a button-like appearance */
             max-width: 250px; /* Set a maximum width for a smaller square shape */
             margin: 0 auto 10px; /* Center the image and add space between images */
+            border: none; /* Remove border */
+            padding: 10px; /* Add padding for better appearance */
+            background-color: white; /* Blue background color for the buttons */
+            transition: opacity 0.3s; /* Add a smooth transition for the opacity */
+        }
+
+        #popup-container img:hover {
+            opacity: 0.8; /* Reduce opacity on hover for a visual effect */
+        }
+
+        #popup-container img::after {   
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-color: #811ee4; /* Blue color for the cart icon */
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            border-radius: 50%; /* Make it circular */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 12px;
         }
 
         #close-btn {
@@ -47,29 +72,48 @@
         .column {
             flex: 48%; /* Set the width for each column with a small gap */
         }
+
+        /* Add a class for the clicked state */
+        .clicked {
+            opacity: 0.5; /* Reduce the opacity of the clicked image */
+        }
+
+        /* Add a class to adjust the margin of the third image */
+       
+
+        h1{
+            color: gold;
+        }
+        h3{
+            color:#fdc300;
+        }
     </style>
 </head>
 <body>
 
 <!-- Popup container -->
 <div id="popup-container">
-    <h1 align="Center">Buy on</h1>
+     <h1 align="Center">CLICK TO PURCHASE IN </h1>
     <span id="close-btn" onclick="closePopup()">X</span>
     <div class="row">
        
         <div class="column">
-            <a href="https://www.amazon.in/" target="_blank"><img src="./Amazon_icon.png" alt="Image 1"></a>
+            <a href="https://www.amazon.in/" target="_blank"><img src="./Amazon_icon.png" alt="Image 1" onclick="changeColor(this)"></a>
+            <h3 align="center">Amazon</h3>
         </div>
         <div class="column">
-            <a href="https://www.flipkart.com/" target="_blank"><img src="./flipart.png" alt="Image 2"></a>
+            <a href="https://www.flipkart.com/" target="_blank"><img src="./flipart.png" alt="Image 2" onclick="changeColor(this)"></a>
+            <h3 align="center">Flipkart</h3>
         </div>
     </div>
     <div class="row">
-        <div class="column">
-            <a href="https://treyfa.in/" target="_blank"><img src="./Untitled-1.png" alt="Image 3"></a>
+        <div class="column adjust-margin">
+            <a href="https://treyfa.in/" target="_blank"><img src="./TREYFA1.png" alt="Image 3" onclick="changeColor(this)"></a>
+            <h3 align="center">Treyfa</h3>
         </div>
         <div class="column">
-            <a href="https://www.jiomart.com/" target="_blank"><img src="./jio mart.png" alt="Image 4"></a>
+            <a href="https://www.jiomart.com/" target="_blank"><img src="./jio mart.png" alt="Image 4" onclick="changeColor(this)"></a>
+            <h3 align="center">jiomart</h3>
         </div>
     </div>
 </div>
@@ -82,6 +126,17 @@
 
     function closePopup() {
         document.getElementById('popup-container').style.display = 'none';
+    }
+
+    function changeColor(element) {
+        // Remove the 'clicked' class from all images
+        var images = document.querySelectorAll('#popup-container img');
+        images.forEach(function(img) {
+            img.classList.remove('clicked');
+        });
+
+        // Add the 'clicked' class to the clicked image
+        element.classList.add('clicked');
     }
 </script>
 
